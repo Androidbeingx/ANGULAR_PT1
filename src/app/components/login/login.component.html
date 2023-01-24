@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="login">
+    <form [formGroup]="loginform" (ngSubmit)="submit()" class="custom-form" >
+      <h1>Login</h1>
+      <div>
+        <input  type="text"  formControlName="user" name="user" placeholder="User" required="required"/> 
+        <span  *ngIf="this.loginform.get('user')?.errors?.['required'] && 
+                          this.loginform.get('user')?.touched">
+                  The user input could not be empty.
+        </span> 
+      </div>
+     <div>
+        <input type="password" formControlName="password" name="password" placeholder="Password" required="required"/>
+        <span  *ngIf="this.loginform.get('password')?.errors?.['required'] &&  
+                          this.loginform.get('password')?.touched">
+                  The password input could not be empty.
+        </span>
+     </div>
+     <br>
+      <button type="submit" [disabled]="loginform.invalid">Log in</button>
+    </form>
+</div>
