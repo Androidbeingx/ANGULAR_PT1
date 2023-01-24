@@ -1,6 +1,10 @@
 # TicketHub
 
+- __Author:__ Andrea Morales Mata
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+
+- This class project is about a web app to admin tickets.
 
 ## Development server
 
