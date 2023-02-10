@@ -1,20 +1,29 @@
 <nav>
+    
     <ul>
-        <li  routerLinkActive="activo">
+        <li  routerLinkActive="activo" >
             <a routerLink="/home">Home</a>
         </li>
-        <li  routerLinkActive="activo">
-            <a routerLink="/login">Login</a>
+        <li  routerLinkActive="activo" *ngIf="loggedIn()">
+            <a routerLink="/events">List Events</a>
         </li>
-        <li  routerLinkActive="activo">
+        <li  routerLinkActive="activo" *ngIf="!loggedIn()">
+            <a routerLink="/login" >Login</a>
+        </li>
+        <li  routerLinkActive="activo" *ngIf="!loggedIn()">
             <a routerLink="/register">Register</a>
         </li>
-        <li  routerLinkActive="activo">
-            <a routerLink="/logout">Logout</a>
+        <li  routerLinkActive="activo" *ngIf="loggedIn()">
+            <a routerLink="/logout" >Logout</a>
+        </li>
+        <li *ngIf="loggedIn()">
+            <!-- No entiendo por que no funciona -->
+            <a>{{getUsernameAndRole()}} {{role | uppercase}} user: {{user}}</a>
         </li>
     </ul>
-     
-    <router-outlet></router-outlet>
  
-  
 </nav>
+
+<router-outlet>
+ 
+</router-outlet>

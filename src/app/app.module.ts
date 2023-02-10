@@ -10,6 +10,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { ListeventsComponent } from './components/listevents/listevents.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PassrepeatDirective } from './directives/passrepeat.directive';
+import { PassDirective } from './directives/pass.directive';
+import { UserDirective } from './directives/user.directive';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,18 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    ListeventsComponent,
+    PassrepeatDirective,
+    PassDirective,
+    UserDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -2,90 +2,104 @@
 
 export class User {
 
-    #user!:string;
-    #pass!:string;
-    #rol!:string;
-    #mail!:string;
-    #estado!:string;
-    #sexo!:string;
-    #info!:string[];
-    #condi!:boolean;
+    #User!:string;
+    #Pass!:string;
+    #Rol!:string;
+    #Mail!:string;
+    #Status!:string;
+    #Gender!:string;
+    #Info!:string[];
+    #Condi!:boolean;
 
 
-    constructor (user:string, pass:string, rol:string, mail:string, estado:string, sexo:string, info:string[], condi:boolean) {
-        this.#user = user;
-        this.#pass = pass;
-        this.#rol = rol;
-        this.#mail = mail;
-        this.#estado = estado;
-        this.#sexo = user;
-        this.#info = info;
-        this.#condi = condi;
+    constructor (user:string, pass:string, rol:string, mail: string, status: string, gender: string, info: string[], condi: boolean) {
+        this.#User = user;
+        this.#Pass = pass;
+        this.#Rol = rol;
+        this.#Mail = mail;
+        this.#Status = status;
+        this.#Gender = gender;
+        this.#Info = info;
+        this.#Condi = condi;
     }
 
-
-    get user () {
-        return this.#user;
+    get User () {
+        return this.#User;
     }
 
-    get pass () {
-        return this.#pass;
+    get Pass () {
+        return this.#Pass;
     }
 
-    get rol () {
-        return this.#rol;
+    get Rol () {
+        return this.#Rol;
     }
 
-    get mail () {
-        return this.#mail;
+    get Mail () {
+        return this.#Mail;
     }
 
-    get estado () {
-        return this.#estado;
+    get Status () {
+        return this.#Status;
     }
 
-    get sexo () {
-        return this.#sexo;
+    get Gender () {
+        return this.#Gender;
     }
 
-    get info () {
-        return this.#info;
+    get Info () {
+        return this.#Info;
     }
 
-    get condi () {
-        return this.#condi;
+    get Condi () {
+        return this.#Condi;
     }
 
-    set user(user) {
-        this.#user = user;
+    set User(user) {
+        this.#User = user;
     }
 
-    set pass(pass) {
-        this.#pass = pass;
+    set Pass(pass) {
+        this.#Pass = pass;
     }
 
-    set rol(rol) {
-        this.#rol = rol;
+    set Rol(rol) {
+        this.#Rol = rol;
     }
 
-    set mail(mail) {
-        this.#mail = mail;
+    set Mail(mail) {
+        this.#Mail = mail;
     }
 
-    set estado(estado) {
-        this.#estado = estado;
+    set Status(status) {
+        this.#Status = status;
     }
 
-    set sexo(sexo) {
-        this.#sexo = sexo;
+    set Gender(gender) {
+        this.#Gender = gender;
     }
 
-    set info(info) {
-        this.#info = info;
+    set Info(info) {
+        this.#Info = info;
     }
 
-    set condi(condi) {
-        this.#condi = condi;
+    set Condi(condi) {
+        this.#Condi = condi;
     }
+    
+    getObject () {
+        let myobject ={
+         user: this.#User,
+         pass: this.#Pass,
+         rol: this.#Rol,
+         mail: this.#Mail,
+         status: this.#Status,
+         gender: this.#Gender,
+         info: this.#Info,
+         condi: this.#Condi    
+        }
+        return myobject
+    }
+
 
 }

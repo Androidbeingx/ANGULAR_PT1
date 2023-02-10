@@ -1,8 +1,11 @@
 .activo {
     background-color: #ccc;  
   }
+  a{
+    color: black;
+  }
   .activo a {
-    color: green;
+    color: blue;
   }
   ul {
     list-style: none;
@@ -12,4 +15,9 @@
     margin-right: 20px;
     background-color: #eee;
     padding: 15px;
-  }
+    color: black
+  }  
+   nav {
+    background-color: #eee;
+   }
+  

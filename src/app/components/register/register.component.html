@@ -1,21 +1,113 @@
 <div class="login">
     <form [formGroup]="registerform" (ngSubmit)="submit()" class="custom-form" >
-      <h1>Register</h1>
-      <div>
-        <input  type="text"  formControlName="user" name="user" placeholder="User" required="required"/> 
-        <span  *ngIf="this.registerform.get('user')?.errors?.['required'] && 
-                          this.registerform.get('user')?.touched">
-                  The user input could not be empty.
+        <h1>Register</h1>
+        <div>
+          <input  type="text"  formControlName="user" name="user" placeholder="User" required="required" appUser/> 
+          <span  *ngIf="this.registerform.get('user')?.errors?.['required'] && 
+                            this.registerform.get('user')?.touched">
+                    The user input could not be empty.
+          </span>
+          <span   *ngIf="this.registerform.get('user')?.errors?.['minlength']&& 
+                            this.registerform.get('user')?.dirty">
+                Could not be less than 6 letters.
+            </span>
+            <span   *ngIf="this.registerform.get('user')?.errors?.['pattern']&& 
+                            this.registerform.get('user')?.dirty">
+                Only letters allowed.
+            </span>
+          <span *ngIf="this.registerform.get('user')?.errors?.['word'] && this.registerform.get('user')?.dirty">
+            Forbidden word.
         </span> 
-      </div>
-     <div>
-        <input type="password" formControlName="password" name="password" placeholder="Password" required="required"/>
-        <span  *ngIf="this.registerform.get('password')?.errors?.['required'] &&  
-                          this.registerform.get('password')?.touched">
-                  The password input could not be empty.
+        </div>
+        <div>
+            <input type="password" formControlName="password" name="password" placeholder="Password" required="required" appPass/>
+            <span  *ngIf="this.registerform.get('password')?.errors?.['required'] &&  
+                              this.registerform.get('password')?.touched">
+                      The password input could not be empty.
+            </span>
+            <span   *ngIf="this.registerform.get('password')?.errors?.['minlength']&& 
+                            this.registerform.get('password')?.dirty">
+                Could not be less than 8 letters.
+            </span>
+            <span   *ngIf="this.registerform.get('password')?.errors?.['pattern']&& 
+                            this.registerform.get('password')?.dirty">
+                Only allowed letters and numbers.
+            </span>
+            <span *ngIf="this.registerform.get('password')?.errors?.['number'] && this.registerform.get('password')?.dirty">
+              Should contain numbers.
+          </span>
+        </div>
+        <div>
+          <input type="password" formControlName="password1" name="password1" placeholder="Repeat Password" required="required" appPassrepeat [param]="this.registerform.value.password"/>
+          <span  *ngIf="this.registerform.get('password1')?.errors?.['required'] &&  
+                            this.registerform.get('password1')?.touched">
+                    The password input could not be empty.
+          </span>
+          <span *ngIf="this.registerform.get('password1')?.errors?.['repeat'] && this.registerform.get('password1')?.dirty">
+                    Does not match with the written password.
         </span>
-     </div>
-     <br>
-      <button type="submit" [disabled]="registerform.invalid">Log in</button>
+        </div>
+        <div>
+          <input  type="mail"  formControlName="mail" name="mail" placeholder="Mail" required="required"/> 
+          <span  *ngIf="this.registerform.get('mail')?.errors?.['required'] && 
+                            this.registerform.get('mail')?.touched">
+                    The mail input could not be empty.
+          </span>
+          <span  *ngIf="this.registerform.get('mail')?.errors?.['pattern'] && 
+                            this.registerform.get('mail')?.touched">
+                    The mail input have not the correct format.
+          </span>  
+        </div>
+        <div>
+          <b>Status:</b>
+          <select formControlName="status" >
+            <option >Married</option>
+            <option >Single</option>
+            <option >Divorced</option>
+          </select>
+          <span   *ngIf="this.registerform.get('status')?.errors?.['required'] && 
+                        this.registerform.get('status')?.pristine">
+                    Must be a choosen field.
+          </span>
+          <br>
+          <br>
+          <b>Gender:</b>
+          <input type="radio" value="Woman" formControlName="gender">Woman
+          <input type="radio" value="Man" formControlName="gender">Man
+          <input type="radio" value="Other" formControlName="gender">Other
+          <span   *ngIf="this.registerform.get('gender')?.errors?.['required'] && 
+                        this.registerform.get('gender')?.pristine">
+                    Must be a choosen field.
+          </span>
+        </div>
+        <br>
+        <div>
+          <b>What are you intersted in?</b>
+          <br>
+          <br>
+          <input type="checkbox" name="info" formControlName="info" value="Videogames">
+          <label for="info">Videogames</label>
+          <input type="checkbox" name="info" formControlName="info" value="Accesories">
+          <label for="info">Accesories</label>
+          <input type="checkbox" name="info" formControlName="info" value="Market development">
+          <label for="info">Market developments</label>
+        </div>
+        <br>
+        <br>
+        <div>
+          <input type="checkbox" name="condi" formControlName="condi">
+            <label for="condi">Accept the conditions</label>
+            <span   *ngIf="this.registerform.get('condi')?.errors?.['requiredTrue'] && 
+                    this.registerform.get('condi')?.pristine">
+                  Must accept the conditions.
+            </span>
+        </div>
+      <br>
+      <button type="submit" [disabled]="registerform.invalid">Register</button>
+      <br>
+      <div>
+        {{response}}
+      </div>
     </form>
+    
 </div>
