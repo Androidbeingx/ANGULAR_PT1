@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>List of events</h1>
+    <h4>Filters:</h4>
+    <div class="row align-items-center">
+        <div class="col">
+            <label for="pagination">Items per page</label>
+            <select name="pagination" [(ngModel)]="pagefilter" (ngModelChange)="pageFilter()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+        <div class="col" >Filter by location: <input type="text" [(ngModel)]="locfilter" (ngModelChange)="filterinput()"></div>
+    
+        <div class="col">Filter by price:   <input type="range" min="5" max="100" [(ngModel)]="pricefilter" (ngModelChange)="filterinput()"></div>
+    </div>
+    <br>
+    <br>
+    <div >
+        There are {{filterEvents.length}} matches! 
+        <p *ngIf="filterEvents.length === 0">No results found.</p>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="filterEvents.length > 0">
+        <table class="table table-hover" id="positiont">
+            <thead>
+                <tr class="table-secondary">
+                    <th scope="row">Event</th>
+                    <th >Type</th>
+                    <th>Date</th>
+                    <th >Place</th>
+                    <th >Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of filterEvents | paginate: {itemsPerPage: total, currentPage: p}">
+                    <td>{{event.Name}}</td>
+                    <td>{{event.Type}}</td>
+                    <td>{{event.Date | date:"dd/MM/yy"}}</td>
+                    <td>{{event.Place}}</td>
+                    <td>{{event.Price}} €</td>
+                    <td *ngIf="userrol === 'admin'"><button class="btn btn-dark" (click)="deleteObject(event)">Delete</button></td>
+                    <td *ngIf="userrol === 'buyer'"><button class="btn btn-dark" >Buy</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
